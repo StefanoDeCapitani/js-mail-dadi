@@ -7,11 +7,10 @@ const emails = [
   "viola.bellini00@gmail.com",
 ];
 const attemptsAvailable = 3;
+let message;
 
 for (let j = 0; j < attemptsAvailable; j++) {
   let attempt = j + 1;
-  let message = `Email non riconosciuta, tentativo di accesso ${attempt}/${attemptsAvailable}\nPremi "OK" per riprovare.`;
-
   const emailEntry = prompt("Scrivi la tua mail per accedere.");
 
   let emailRecognized = false;
@@ -29,14 +28,19 @@ for (let j = 0; j < attemptsAvailable; j++) {
     }
 
     if (attempt === attemptsAvailable) {
-      message = "Tentativi esauriti. Riprova più tardi.";
+      message =
+        "Email non riconosciuta.\nTentativi esauriti. Riprova più tardi.";
+      break;
     }
 
-    alert(message);
-  } else {
     alert(
-      "Accesso annullato. Per riprovare è necessario ricaricare la pagina."
+      `Email non riconosciuta.\nTentativo di accesso ${attempt}/${attemptsAvailable}.\n\nPremi "OK" per riprovare.`
     );
+  } else {
+    message =
+      "Accesso annullato. Per riprovare è necessario ricaricare la pagina.";
     break;
   }
 }
+
+alert(message);
