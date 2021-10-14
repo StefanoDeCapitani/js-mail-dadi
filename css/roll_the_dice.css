@@ -131,6 +131,7 @@ h2 {
   border-radius: 0.5rem;
   color: black;
   background-color: #f9f9f9;
+  transition: all 0.5s;
 }
 
 .game-board__message,
@@ -145,6 +146,7 @@ h2 {
   border: none;
   background: #e072a4;
   color: rgb(61, 59, 142);
+  cursor: pointer;
 }
 
 .dot {
@@ -155,4 +157,17 @@ h2 {
 
 .visible {
   background-color: black;
+}
+
+.pulsating {
+  animation: pulsating 0.5s alternate ease-out infinite;
+}
+
+@keyframes pulsating {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }

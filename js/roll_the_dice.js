@@ -1,8 +1,6 @@
 const rollBtn = document.querySelector(".btn-roll");
 const messageImg = document.querySelector(".message-image");
 
-/* messageImg.setAttribute("src", "img/roll-the-dice.png"); */
-
 const MAX_NUMBER_OF_ROLLS = 10;
 
 let computerRoll = 0,
@@ -165,5 +163,6 @@ function stopWhenScoreReachesMax(computerScore, userScore) {
   if (maxNumberOfRollsReached) {
     rollBtn.disabled = true;
     rollBtn.style.color = "rgba(61, 59, 142, 0.3)";
+    rollBtn.classList.remove("pulsating");
   }
 }
