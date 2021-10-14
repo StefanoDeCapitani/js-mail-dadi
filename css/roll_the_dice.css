@@ -7,13 +7,33 @@
 }
 
 :root {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  background: rgb(61, 59, 142);
+  background: linear-gradient(
+    0deg,
+    rgba(61, 59, 142, 1) 0%,
+    rgba(224, 114, 164, 1) 100%
+  );
+  color: #f9f9f9;
+  min-height: 100vh;
 }
 
 .header {
   padding: 3rem 0;
   text-align: center;
+  color: rgb(61, 59, 142);
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 500;
 }
 
 .container {
@@ -24,7 +44,6 @@
 }
 
 .game-board {
-  padding: 5rem 0;
   width: 80%;
   max-width: 992px;
   display: grid;
@@ -34,7 +53,11 @@
 }
 
 .game-board__message {
-  height: 100px;
+  height: 150px;
+}
+
+.message-image {
+  height: 100%;
 }
 
 .game-board__computer,
@@ -43,8 +66,16 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid black;
   padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.308);
+  backdrop-filter: blur(2px);
+}
+
+.game-board__computer,
+.game-board__user,
+.btn-roll {
+  box-shadow: 0 0 30px rgba(224, 114, 164, 0.5);
 }
 
 .game-board__computer {
@@ -60,20 +91,46 @@
   width: 100%;
   padding-top: 100%;
   position: relative;
-  border: 1px solid black;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
 }
 
 .dice > .dice-content {
   position: absolute;
-  inset: 1rem;
+  inset: 1.3rem;
   display: grid;
   place-items: center;
-  gap: 0.2rem;
+  gap: 0.6rem;
 }
 
 .game-board__computer section,
 .game-board__user section {
-  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.game-board__computer section h2,
+.game-board__user section h2 {
+  flex: 0 0 auto;
+}
+
+.game-board__computer section div,
+.game-board__user section div {
+  flex: 1 0 auto;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.score {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+  color: black;
+  background-color: #f9f9f9;
 }
 
 .game-board__message,
@@ -82,11 +139,12 @@
 }
 
 .btn-roll {
-  font-size: 1.4rem;
-  padding: 0.5rem 1.5rem;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
   border-radius: 1rem;
   border: none;
-  background: red;
+  background: #e072a4;
+  color: rgb(61, 59, 142);
 }
 
 .dot {
