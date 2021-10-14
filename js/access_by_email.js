@@ -46,7 +46,7 @@ let emailRecognized = false;
 
 alert(message); */
 
-//Short version. Avoided multiple breaks.
+//Bonus version with input field
 
 const emails = [
   "console.log@virgilio.it",
@@ -57,35 +57,39 @@ const emails = [
   "viola.bellini00@gmail.com",
 ];
 
-let message;
-let emailRecognized = false;
+const form = document.querySelector("form");
+const inputEmail = document.querySelector("#email-input");
+const invalidFeedback = document.querySelector(".invalid-feedback");
+const submitBtn = document.getElementById("submit-btn");
 let attemptsAvailable = 3;
 
-while (!emailRecognized && attemptsAvailable > 0) {
-  const emailEntry = prompt("Scrivi la tua mail per accedere.");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let message;
+  const emailEntry = inputEmail.value;
+  let emailRecognised = false;
   attemptsAvailable--;
 
-  if (emailEntry === null) {
-    alert(
-      "Accesso annullato. Per riprovare è necessario ricaricare la pagina."
-    );
-    break;
+  if (attemptsAvailable === 0) {
+    message = "Email non riconosciuta. Tentativi esauriti. Riprova più tardi.";
+    submitBtn.disabled = true;
   } else {
-    if (attemptsAvailable === 0) {
-      message =
-        "Email non riconosciuta.\nTentativi esauriti. Riprova più tardi.";
-    } else {
-      message = `Email non riconosciuta.\nHai ancora ${attemptsAvailable} tentativi.\n\nPremi "OK" per riprovare.`;
-    }
-
-    for (let i = 0; i < emails.length; i++) {
-      if (emailEntry.toLowerCase() === emails[i]) {
-        emailRecognized = true;
-        message = "Accesso consentito. La tua mail è stata riconosciuta.";
-        break;
-      }
-    }
+    let pluraleOSingolare = attemptsAvailable === 1 ? "o" : "i";
+    message = `Email non riconosciuta. Hai ancora ${attemptsAvailable} tentativ${pluraleOSingolare}.`;
   }
 
-  alert(message);
-}
+  for (let i = 0; i < emails.length; i++) {
+    if (emailEntry.toLowerCase() === emails[i]) {
+      emailRecognised = true;
+      window.location.href = "../success.html";
+    }
+  }
+  if (!emailRecognised) {
+    inputEmail.classList.add("is-invalid");
+    invalidFeedback.textContent = message;
+  }
+});
+
+inputEmail.addEventListener("click", function () {
+  inputEmail.classList.remove("is-invalid");
+});
