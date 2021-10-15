@@ -93,6 +93,8 @@ h2 {
   position: relative;
   background-color: #f9f9f9;
   border-radius: 1rem;
+  box-shadow: inset 0 5px #ffffff, inset 0 -5px #b1b1b1, inset 5px 0 #dfdfdf,
+    inset -5px 0 #dfdfdf;
 }
 
 .dice > .dice-content {
@@ -100,6 +102,8 @@ h2 {
   inset: 1.3rem;
   display: grid;
   place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 0.6rem;
 }
 
@@ -134,6 +138,15 @@ h2 {
   transition: all 0.5s;
 }
 
+.partial-win {
+  background: #b0e298;
+  font-size: 2rem;
+}
+
+.tie {
+  background: #b0e298;
+}
+
 .game-board__message,
 .btn-roll {
   grid-column: 1/-1;
@@ -147,6 +160,12 @@ h2 {
   background: #e072a4;
   color: rgb(61, 59, 142);
   cursor: pointer;
+}
+
+.btn-roll.restart {
+  background-color: transparent;
+  color: #e072a4;
+  border: 3px solid #e072a4;
 }
 
 .dot {
